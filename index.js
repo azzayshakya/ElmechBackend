@@ -31,6 +31,9 @@ app.use(
 
 // Connect to the database
 connectDB();
+app.get('/', (req, res) => {
+    res.send(`Your Elemech backend is running `);
+  });
 
 // Routes
 app.use("/api/auth", authRoutes);
