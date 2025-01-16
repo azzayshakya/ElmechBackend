@@ -8,7 +8,6 @@ const protect = require('../middleware/userVerify');
 router.get('/', protect(['admin']), async (req, res, next) => {
   try {
     const comments = await ElmechComment.find(); // Retrieve all comments from the "ElmechComment" collection
-console.log(comments)
     if (!comments || comments.length === 0) {
       return res.status(404).json({ message: 'No comments found' });
     }

@@ -4,7 +4,6 @@ const connectDB = require("./config/db"); // Import the database connection func
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 
-// Import routes
 const authRoutes = require("./routes/AuthRoutes");
 const talkWithUsRoutes = require("./routes/talkWithUsRoutes");
 const commentRoutes = require("./routes/ElmechCommentRoute");
@@ -23,12 +22,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin: ["http://localhost:5173", "https://elmech.live"], // Specify allowed origins
+        origin: "http://localhost:5173", // Adjust this to your frontend URL
         methods: ["GET", "POST", "PUT", "DELETE"],
-        credentials: true, // Enable cookies/credentials
+        credentials: true,
     })
 );
-app.options("*", cors());
+
 // Connect to the database
 connectDB();
 app.get('/', (req, res) => {

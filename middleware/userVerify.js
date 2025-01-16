@@ -16,9 +16,7 @@ const User = require('../models/User');
  *  4. User's role does not match the allowed roles.
  */
 const protect = (allowedRoles = []) => async (req, res, next) => {
-  console.log("this is the hitted")
   const token = req.headers.authorization?.split(' ')[1];
-  console.log(token)
 
   if (!token) {
     return res.status(401).json({ message: 'Authorization token required' });
@@ -29,19 +27,16 @@ const protect = (allowedRoles = []) => async (req, res, next) => {
 
     // Find the user in the database using the userId from the token
     const user = await User.findById(decoded.userId);
-
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'User not foun' });
     }
 
     // Attach the user object to the request for downstream use
     req.user = user;
-    console.log(user)
 
     // Check if the user's role is in the allowedRoles array
     if (allowedRoles.length && !allowedRoles.includes(user.userRole)) {
-      console.log(allowedRoles)
-      console.log(user.Role)
+
 
       return res.status(403).json({ message: 'Access forbidden: Insufficient privileges' });
     }

@@ -20,7 +20,7 @@ const generateAccessToken = (payload) => {
   return jwt.sign(
     payload, // The data to encode in the JWT
     process.env.ACCESS_TOKEN_SECRET, // Secret key for signing the token
-    { expiresIn:process.env.ACCESS_TOKEN_EXPIRY || '3m' } // Token expiration time
+    { expiresIn:process.env.ACCESS_TOKEN_EXPIRY || '1d' } // Token expiration time
   );
 };
 
@@ -38,7 +38,7 @@ const generateAccessToken = (payload) => {
  * @returns {string} - A signed JWT refresh token.
  */
 const generateRefreshToken = (userId) => {
-  console.log("generateRefreshToken is called for the ", userId )
+  // console.log("generateRefreshToken is called for the ", userId )
   return jwt.sign(
     { userId }, // The data to encode in the JWT (user ID in this case)
     process.env.REFRESH_TOKEN_SECRET, // Secret key for signing the token

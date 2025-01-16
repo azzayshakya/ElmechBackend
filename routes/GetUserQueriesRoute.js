@@ -5,7 +5,6 @@ const protect = require('../middleware/userVerify');
 
 
 router.get('/',protect(['admin']), async (req, res, next) => {
-  console.log("hitted user queries route")
   try {
     const queries = await TalkWithUs.find(); // Retrieve all user queries
 

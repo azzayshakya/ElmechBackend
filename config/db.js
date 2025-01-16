@@ -14,7 +14,7 @@ const connectDB = async () => {
       useNewUrlParser: true,    // Use the new URL parser to avoid deprecation warnings
       useUnifiedTopology: true // Use the new server discovery and monitoring engine
     });
-    console.log('MongoDB connected successfully'); // Log on successful connection
+    console.log('MongoDB connected successfully');
   } catch (error) {
     console.error(`MongoDB connection failed: ${error.message}`); // Log error message
     process.exit(1); // Exit process with failure code
