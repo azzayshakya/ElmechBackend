@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const updateHistorySchema = new mongoose.Schema(
   {
@@ -208,6 +208,8 @@ const userSchema = new mongoose.Schema({
   update_history: [updateHistorySchema]
 });
 
-module.exports = mongoose.model("User", userSchema);
+import mongoose from "mongoose";
 
-module.exports.updateHistorySchema = updateHistorySchema
+const User = mongoose.model("User", userSchema);
+
+export { User, updateHistorySchema };
