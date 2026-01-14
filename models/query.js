@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 import { updateHistorySchema } from "./user"
 
 const querySchema = new mongoose.Schema({
@@ -66,4 +68,8 @@ const querySchema = new mongoose.Schema({
   update_history: [updateHistorySchema]
 });
 
-module.exports = mongoose.model("Query", querySchema);
+
+const Query =
+  mongoose.models.Query || mongoose.model("Query", querySchema);
+
+export default Query;

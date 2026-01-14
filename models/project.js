@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 import { updateHistorySchema } from "./user"
 
 const projectSchema = new mongoose.Schema({
@@ -98,4 +100,7 @@ const projectSchema = new mongoose.Schema({
   update_history: [updateHistorySchema]
 });
 
-module.exports = mongoose.model("Project", projectSchema);
+const Project =
+  mongoose.models.Project || mongoose.model("Project", projectSchema);
+
+export default Project;
