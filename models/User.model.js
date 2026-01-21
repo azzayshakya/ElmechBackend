@@ -208,7 +208,6 @@ const userSchema = new mongoose.Schema({
   update_history: [updateHistorySchema]
 });
 
-import mongoose from "mongoose";
 
 const User = mongoose.model("User", userSchema);
 
