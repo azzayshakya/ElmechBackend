@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import authRoutes from "./routes/auth.routes.js"
 import { connectDb } from "./config/db.js";
 import dotenv from "dotenv"
 dotenv.config()
@@ -13,9 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get("/hello", async (req, res) => {
-    return res.json({ data: "hello" });
-});
+app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
