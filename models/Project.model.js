@@ -6,8 +6,9 @@ const projectSchema = new mongoose.Schema({
   projectId: {
     type: mongoose.Schema.Types.ObjectId,
     default: () => new mongoose.Types.ObjectId(),
-    unique: true
-  },
+    index: true
+  }
+  ,
   projectName: {
     type: String,
     maxlength: 256,
@@ -61,7 +62,8 @@ const projectSchema = new mongoose.Schema({
 
   created_at: {
     type: Date,
-    default: () => new Date().setHours(0, 0, 0, 0)
+    default: () => new Date().setHours(0, 0, 0, 0),
+    immutable: true
   },
 
   projectStatus: {
